@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time program</title>
+    <style>
+        body{
+
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <p>Today is: <span id="day">Monday</span></p>
+            <p>Current time is: <span id="time">10:30:38pm</span></p>
+        </div>
+    </main>
+    
+    <!-- Custom js script tags -->
+    <script>
+        // Function to add a leading 0 if the unit is less than 10
+        function formatTime(unit){
+            return unit < 10 ? `0${unit}` : unit;
+        }
+        // Function to updateTime
+        function updateTime(){
+            // Current date and time
+            var today = new Date();
+
+            // Gets the day of the week in number(0-6)
+            var day = today.getDay();
+            // Array of day names
+            var dayList = ['Sunday', 'Monday', 'Tuesday',  'Wednessday', 'Thursday','Friday', 'Saturday'];
+
+            // Display the current day
+            let showDate = document.getElementById('day');
+            showDate.innerHTML = dayList[day];
+
+
+            // Get the current hour, minute, and seconds
+            var hour = today.getHours();
+            var minute = today.getMinutes();
+            var second = today.getSeconds();
+
+            // Get am/pm
+            var prepand = (hour >= 12) ? 'PM' : 'AM';
+
+            // 24 hour format to 12 hour format
+            hour = (hour >= 12) ? hour - 12 : hour;
+
+            // Check for special cases when hour is 0
+            if(hour === 0 && prepand === 'PM') {
+                if(minute === 0 && second === 0) {
+                    hour = 12;
+                    prepand = 'Noon';
+                }else{
+                    hour = 12;
+                    prepand = 'PM';
+                }
+            }
+
+            if(hour === 0 && prepand === 'AM') {
+                if(minute === 0 && second === 0) {
+                    hour = 12;
+                    prepand = 'Midnight';
+                }else{
+                    hour = 12;
+                    prepand = 'AM';
+                }
+            }
+
+            // format the time to add leading 0
+            hour = formatTime(hour);
+            minute = formatTime(minute);
+            second = formatTime(second);
+            
+
+            // Display the current time
+            let showTime = document.getElementById('time');
+            showTime.innerHTML = `${hour}:${minute}:${second} ${prepand}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+        
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+Debugs
+
+
+1. the inputs values need to be type casted to numbers using Number() function
+2. The condition of the if block must be inside () parenthesis
+3. instead of using form and a submit button, removed the form tags and the type='submit' and used regular button with onclick event listener.

@@ -1,0 +1,5 @@
+DEBUGS and notes
+
+
+1. script tag must be before </body> tag
+2. write the function and then apply the event trigger or listener to the button and the function as the event result.

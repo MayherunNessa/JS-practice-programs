@@ -1,0 +1,13 @@
+**All the debugs in this program are the following**
+
+1. Instead of class attribute to the <p> tags, I used span.day and span.time instead
+2. New and Date() is two different objects. they need to be separated.
+3. the showDate object which represents the span.day, must be declared, without the .innerHTML method
+4. innerHTML -> O, innerHtml -> X 
+5. showDate object represents only the object, not the innerHTML. so when assigning any of the array string value, innerHTML property is needed to be declared
+6. to use string literal, instead of "" or '' we need to use `` back ticks.
+7. the name of the id, class, name etc. when passing as a paramenter to document objects, we must pass it as  a string.
+8.To constantly update the time, I've implemented the following ->
+-firstly, put all the code inside updateTime() function
+-secondly, I called the setInterval() function and passed the updateTime function and set the interval every 1000 milli seconds.
+-lastly, called the initial updateTime() function so that it activates or starts with the loading body of html.

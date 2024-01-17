@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <p>Today's date</p>
+        <span id="date">12-12-2023</span>
+        <br>
+        <span id="dateFull">12 Dec 2023</span>
+    </div>
+
+    <!-- Custom javascript -->
+    <script>
+        function formatUnit(unit){
+            return unit < 10 ? `0${unit}` : unit;
+        }
+        function updateDate(){
+            // Get the current date
+            var today = new Date();
+
+            // get day, month, year
+            var date = today.getDate();
+            var month = today.getMonth();
+            var year = today.getFullYear();
+
+            // set and get month name from array
+            let monthList = ['None','Jan', 'Feb', 'Mar', 'Apr', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            let monthName = monthList[month];
+
+            // Format dates
+            date = formatUnit(date);
+            month = formatUnit(month);
+            year = formatUnit(year);
+            
+            // show date 1
+            let showDate = document.getElementById('date');
+            showDate.innerHTML = `${date}-${month}-${year}`;
+            
+            // show date 2
+            let showDateFull = document.getElementById('dateFull');
+            showDateFull.innerHTML = `${date} ${monthName} ${year}`;
+        }
+        setInterval(updateDate, 1000)
+        updateDate();
+    </script>
+</body>
+</html>
